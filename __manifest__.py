@@ -22,7 +22,7 @@ Works on any Odoo view: Products, Sales Orders, Contacts, Inventory, and more.
     'depends': ['web'],
     'assets': {
         'web.assets_backend': [
-            'multi_search/static/src/js/multi_search.js',
+            'sa_multi_search/static/src/js/multi_search.js',
         ],
     },
     'images': [

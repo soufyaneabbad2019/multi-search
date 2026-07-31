@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #2c2c2c; background: #fff; }
+
+/* ── BANNER ── */
+.banner-wrap { text-align: center; margin-bottom: 48px; }
+.banner-wrap img { width: 100%; max-width: 960px; border-radius: 12px; }
+
+/* ── TAGLINE ── */
+.tagline {
+    text-align: center;
+    font-size: 20px;
+    color: #444;
+    font-style: italic;
+    margin-bottom: 52px;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+.tagline strong { color: #0a1e48; font-style: normal; }
+
+/* ── SECTION ── */
+.section { max-width: 960px; margin: 0 auto 56px; padding: 0 16px; }
+.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #64b4ff;
+    margin-bottom: 8px;
+}
+.section h2 {
+    font-size: 26px;
+    color: #0a1e48;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8f0ff;
+}
+
+/* ── FEATURE CARDS ── */
+.features { display: flex; flex-wrap: wrap; gap: 20px; }
+.feat {
+    flex: 1 1 calc(50% - 10px);
+    background: #f6f9ff;
+    border-radius: 10px;
+    padding: 24px;
+    border-top: 3px solid #64b4ff;
+    transition: box-shadow .2s;
+}
+.feat-icon { font-size: 28px; margin-bottom: 12px; }
+.feat h3 { font-size: 16px; color: #0a1e48; margin-bottom: 8px; }
+.feat p { font-size: 14px; color: #666; line-height: 1.7; }
+
+code {
+    background: #e3edff;
+    color: #0a1e48;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ── SCREENSHOT ── */
+.screen-block { margin: 32px 0; }
+.screen-label {
+    display: inline-block;
+    background: #0a1e48;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 0;
+}
+.screen-block img {
+    width: 100%;
+    border-radius: 0 8px 8px 8px;
+    border: 1px solid #dce8ff;
+    box-shadow: 0 4px 20px rgba(10,30,72,.1);
+    display: block;
+}
+.screen-caption {
+    font-size: 13px;
+    color: #888;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* ── STEPS ── */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+    min-width: 42px; height: 42px;
+    background: linear-gradient(135deg, #0a1e48, #1a4080);
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.step-content h4 { font-size: 15px; color: #0a1e48; margin-bottom: 5px; }
+.step-content p { font-size: 14px; color: #666; line-height: 1.6; }
+
+/* ── METHOD TABS ── */
+.method-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.method-badge {
+    background: linear-gradient(135deg, #0a1e48, #1a4080);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.method-title h3 { font-size: 18px; color: #0a1e48; }
+.method-block { margin-bottom: 40px; }
+
+/* ── COMPAT ── */
+.compat { display: flex; flex-wrap: wrap; gap: 12px; }
+.compat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f6f9ff;
+    border: 1px solid #dce8ff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #0a1e48;
+    font-weight: 500;
+}
+.compat-item .dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; }
+
+/* ── AUTHOR ── */
+.author {
+    background: linear-gradient(135deg, #0a1e48 0%, #1a4080 100%);
+    border-radius: 12px;
+    padding: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+.author-avatar {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    border: 3px solid #64b4ff;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.author-info h3 { font-size: 20px; margin-bottom: 6px; }
+.author-info .role { font-size: 13px; color: #aac4ff; margin-bottom: 12px; }
+.author-info a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #64b4ff;
+    text-decoration: none;
+    font-size: 13px;
+    border: 1px solid #64b4ff;
+    padding: 5px 14px;
+    border-radius: 20px;
+}
+
+hr { border: none; border-top: 1px solid #eef2ff; margin: 56px auto; max-width: 960px; }
+</style>
+</head>
+<body>
+
+<!-- BANNER -->
+<div class="banner-wrap">
+    <img src="banner.png" alt="Multi Search — Odoo Module"/>
+</div>
+
+<!-- TAGLINE -->
+<p class="tagline">
+    Stop typing references one by one.<br/>
+    <strong>Paste your Excel list. Get results instantly.</strong>
+</p>
+
+<!-- FEATURES -->
+<div class="section">
+    <p class="section-title">What you get</p>
+    <h2>Everything you need for bulk search</h2>
+    <div class="features">
+        <div class="feat">
+            <div class="feat-icon">📋</div>
+            <h3>Paste directly from Excel</h3>
+            <p>Copy a column of references from your spreadsheet and paste it straight into the Odoo search bar. The module handles everything — no extra steps needed.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-icon">{ }</div>
+            <h3>Curly brace syntax</h3>
+            <p>Type <code>{ REF001 REF002 REF003 }</code> in the search bar and press Enter. Space-separated values are all searched at once as OR filters.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-icon">🌐</div>
+            <h3>Works on any view & field</h3>
+            <p>Internal Reference, Product Name, Barcode, Order Number, Partner Name — any field available in the dropdown works with multi-search.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-icon">⚡</div>
+            <h3>Zero configuration</h3>
+            <p>Install and start using immediately. No settings page, no mapping, no technical knowledge required. Works out of the box.</p>
+        </div>
+    </div>
+</div>
+
+<hr/>
+
+<!-- HOW TO USE -->
+<div class="section">
+    <p class="section-title">How it works</p>
+    <h2>Two simple methods</h2>
+
+    <!-- METHOD 1 -->
+    <div class="method-block">
+        <div class="method-title">
+            <span class="method-badge">Method 1</span>
+            <h3>Paste from Excel</h3>
+        </div>
+
+        <!-- Screenshot Excel -->
+        <div class="screen-block">
+            <span class="screen-label">📊 Your Excel file</span>
+            <img src="screen_excel.png" alt="Excel references list"/>
+            <p class="screen-caption">Select your reference column in Excel and copy it (Ctrl+C)</p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4>Select your references in Excel</h4>
+                    <p>Highlight the column containing your references — one per row. Copy with <code>Ctrl+C</code>.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4>Paste into the Odoo search bar</h4>
+                    <p>Click the search bar in any Odoo view and paste with <code>Ctrl+V</code>. The module instantly detects multiple values.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4>All matching records appear</h4>
+                    <p>Results are displayed immediately — all references found in a single search with OR logic.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshot Odoo result -->
+        <div class="screen-block" style="margin-top:28px;">
+            <span class="screen-label">✅ Result in Odoo</span>
+            <img src="screen_odoo.png" alt="Multi search result in Odoo"/>
+            <p class="screen-caption">All 10 products found instantly from the pasted references</p>
+        </div>
+    </div>
+
+    <!-- METHOD 2 -->
+    <div class="method-block">
+        <div class="method-title">
+            <span class="method-badge">Method 2</span>
+            <h3>Curly brace syntax</h3>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4>Type your references</h4>
+                    <p>In the search bar, type <code>{ TBL-001 CHR-001 PRZ-001 }</code> with spaces between each value.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4>Select the search field</h4>
+                    <p>Choose from the dropdown which field to search on — Internal Reference, Name, Barcode, etc.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4>Press Enter — done</h4>
+                    <p>All matching records are displayed with OR logic, exactly as if you had searched each value individually.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr/>
+
+<!-- COMPATIBILITY -->
+<div class="section">
+    <p class="section-title">Compatibility</p>
+    <h2>Works with your setup</h2>
+    <div class="compat">
+        <div class="compat-item"><span class="dot"></span> Odoo 18.0</div>
+        <div class="compat-item"><span class="dot"></span> Community Edition</div>
+        <div class="compat-item"><span class="dot"></span> Enterprise Edition</div>
+        <div class="compat-item"><span class="dot"></span> Odoo.sh</div>
+        <div class="compat-item"><span class="dot"></span> All standard views</div>
+        <div class="compat-item"><span class="dot"></span> Custom modules</div>
+    </div>
+</div>
+
+<hr/>
+
+<!-- AUTHOR -->
+<div class="section">
+    <p class="section-title">About</p>
+    <h2>The author</h2>
+    <div class="author">
+        <div class="author-info">
+            <h3>Soufyane Abbad</h3>
+            <p class="role">Odoo Developer · Groupe Oviala</p>
+            <a href="https://www.linkedin.com/in/soufyane-abbad" target="_blank">
+                🔗 linkedin.com/in/soufyane-abbad
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

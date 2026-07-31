@@ -17,7 +17,7 @@ Works on any Odoo view: Products, Sales Orders, Contacts, Inventory, and more.
     'author': 'Soufyane Abbad',
     'website': 'https://www.linkedin.com/in/soufyane-abbad',
     'license': 'OPL-1',
-    'price': 0.0,
+    'price': 40.0,
     'currency': 'EUR',
     'depends': ['web'],
     'assets': {

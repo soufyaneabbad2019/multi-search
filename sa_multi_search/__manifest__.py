@@ -11,8 +11,8 @@ Two ways to use it:
 - Paste a column from Excel directly into the search bar
 - Type { REF001 REF002 REF003 } and press Enter
 
-Works with any search field: Internal Reference, Product Name, Barcode, Order Number, etc.
-Works on any Odoo view: Products, Sales Orders, Contacts, Inventory, and more.
+Works with any search field: Internal Reference, Product Name, Barcode, Order Number, Partner Name, etc.
+Works on any Odoo view: Products, Sales Orders, Purchase Orders, Inventory, Manufacturing Orders, Contacts, and more.
     """,
     'author': 'Soufyane Abbad',
     'website': 'https://www.linkedin.com/in/soufyane-abbad',

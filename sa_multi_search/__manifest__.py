@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Multi Search',
-    'version': '18.0.1.0.0',
+    'version': '19.0.1.0.0',
     'category': 'Tools',
     'summary': 'Search multiple records at once by pasting from Excel or using { } syntax',
     'description': """

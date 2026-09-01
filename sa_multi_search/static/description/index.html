@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <body style="font-family:Helvetica Neue,Arial,sans-serif;color:#2c2c2c;background:#fff;margin:0;padding:0;">
+<style>
+#sa-ms-content-en,#sa-ms-content-fr{display:none;}
+#sa-ms-tab-en:checked ~ #sa-ms-content-en{display:block;}
+#sa-ms-tab-fr:checked ~ #sa-ms-content-fr{display:block;}
+#sa-ms-tab-en:checked ~ .sa-ms-nav label[for="sa-ms-tab-en"]{background:#0a1e48;color:#fff;border-color:#0a1e48;}
+#sa-ms-tab-en:checked ~ .sa-ms-nav label[for="sa-ms-tab-fr"]{background:#f6f9ff;color:#0a1e48;border-color:#dce8ff;}
+#sa-ms-tab-fr:checked ~ .sa-ms-nav label[for="sa-ms-tab-fr"]{background:#0a1e48;color:#fff;border-color:#0a1e48;}
+#sa-ms-tab-fr:checked ~ .sa-ms-nav label[for="sa-ms-tab-en"]{background:#f6f9ff;color:#0a1e48;border-color:#dce8ff;}
+</style>
+<input type="radio" name="sa-ms-lang" id="sa-ms-tab-en" checked style="display:none;"/>
+<input type="radio" name="sa-ms-lang" id="sa-ms-tab-fr" style="display:none;"/>
 <!-- LANGUAGE SWITCH -->
-<div style="text-align:center;margin:24px 0 32px;">
-    <a href="#lang-en" style="display:inline-block;margin:0 6px;padding:8px 20px;border-radius:20px;background:#0a1e48;color:#fff;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.5px;">EN English</a>
-    <a href="#lang-fr" style="display:inline-block;margin:0 6px;padding:8px 20px;border-radius:20px;background:#f6f9ff;color:#0a1e48;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.5px;border:1px solid #dce8ff;">FR Français</a>
+<div class="sa-ms-nav" style="text-align:center;margin:24px 0 32px;">
+    <label for="sa-ms-tab-en" style="cursor:pointer;display:inline-block;margin:0 6px;padding:8px 20px;border-radius:20px;background:#0a1e48;color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px;border:1px solid #0a1e48;">EN English</label>
+    <label for="sa-ms-tab-fr" style="cursor:pointer;display:inline-block;margin:0 6px;padding:8px 20px;border-radius:20px;background:#f6f9ff;color:#0a1e48;font-size:13px;font-weight:700;letter-spacing:.5px;border:1px solid #dce8ff;">FR Français</label>
 </div>
-<div id="lang-en">
+<div id="sa-ms-content-en">
 
 
 <!-- TAGLINE -->
@@ -153,81 +164,92 @@
     <h2 style="font-size:26px;color:#0a1e48;margin:0 0 26px;padding-bottom:12px;border-bottom:2px solid #e8f0ff;">One tool, every department</h2>
     <p style="font-size:15px;color:#555;line-height:1.7;margin:0 0 30px;">Multi Search isn't limited to products -- it patches Odoo's search bar itself, so it works the exact same way on any list view across your database. Each example below shows the same two steps: a reference list copied from Excel, and the matching records found instantly in Odoo.</p>
 
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Sales Orders</div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Products</div>
         <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
             <tr>
-                <td style="width:240px;vertical-align:top;">
+                <td style="width:300px;vertical-align:top;">
+                    <img src="screen_excel.png" alt="Excel reference list for products" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Reference list in Excel</p>
+                </td>
+                <td style="vertical-align:top;">
+                    <img src="screen_odoo.png" alt="Multi search result on products" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">All matching products found in Odoo</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Sales Orders</div>
+        <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
+            <tr>
+                <td style="width:300px;vertical-align:top;">
                     <img src="ventes_excel.png" alt="Excel reference list for sales orders" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Reference list in Excel</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Reference list in Excel</p>
                 </td>
                 <td style="vertical-align:top;">
                     <img src="ventes_odoo.png" alt="Multi search result on sales orders" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">All matching sales orders found in Odoo</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">All matching sales orders found in Odoo</p>
                 </td>
             </tr>
         </table>
     </div>
-
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Purchase Orders</div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Purchase Orders</div>
         <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
             <tr>
-                <td style="width:240px;vertical-align:top;">
+                <td style="width:300px;vertical-align:top;">
                     <img src="achats_excel.png" alt="Excel reference list for purchase orders" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Reference list in Excel</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Reference list in Excel</p>
                 </td>
                 <td style="vertical-align:top;">
                     <img src="achats_odoo.png" alt="Multi search result on purchase orders" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">All matching purchase orders found in Odoo</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">All matching purchase orders found in Odoo</p>
                 </td>
             </tr>
         </table>
     </div>
-
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Manufacturing Orders</div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Manufacturing Orders</div>
         <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
             <tr>
-                <td style="width:240px;vertical-align:top;">
+                <td style="width:300px;vertical-align:top;">
                     <img src="fabrication_excel.png" alt="Excel reference list for manufacturing orders" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Reference list in Excel</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Reference list in Excel</p>
                 </td>
                 <td style="vertical-align:top;">
                     <img src="fabrication_odoo.png" alt="Multi search result on manufacturing orders" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">All matching manufacturing orders found in Odoo</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">All matching manufacturing orders found in Odoo</p>
                 </td>
             </tr>
         </table>
     </div>
-
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Contacts</div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Inventory</div>
         <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
             <tr>
-                <td style="width:240px;vertical-align:top;">
-                    <img src="contacts_excel.png" alt="Excel reference list for contacts" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Reference list in Excel</p>
-                </td>
-                <td style="vertical-align:top;">
-                    <img src="contacts_odoo.png" alt="Multi search result on contacts" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">All matching contacts found in Odoo</p>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Inventory</div>
-        <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
-            <tr>
-                <td style="width:240px;vertical-align:top;">
+                <td style="width:300px;vertical-align:top;">
                     <img src="inventory_excel.png" alt="Excel reference list for inventory transfers" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Reference list in Excel</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Reference list in Excel</p>
                 </td>
                 <td style="vertical-align:top;">
                     <img src="inventory_odoo.png" alt="Multi search result on inventory transfers" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">All matching transfers found in Odoo</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">All matching transfers found in Odoo</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Contacts</div>
+        <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
+            <tr>
+                <td style="width:300px;vertical-align:top;">
+                    <img src="contacts_excel.png" alt="Excel reference list for contacts" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Reference list in Excel</p>
+                </td>
+                <td style="vertical-align:top;">
+                    <img src="contacts_odoo.png" alt="Multi search result on contacts" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">All matching contacts found in Odoo</p>
                 </td>
             </tr>
         </table>
@@ -271,7 +293,7 @@
 
 </div>
 
-<div id="lang-fr">
+<div id="sa-ms-content-fr">
 
 <!-- TAGLINE -->
 <p style="text-align:center;font-size:20px;color:#444;font-style:italic;margin:0 0 44px;padding:0 20px;line-height:1.7;">
@@ -417,81 +439,92 @@
     <h2 style="font-size:26px;color:#0a1e48;margin:0 0 26px;padding-bottom:12px;border-bottom:2px solid #e8f0ff;">Un seul outil, tous les departements</h2>
     <p style="font-size:15px;color:#555;line-height:1.7;margin:0 0 30px;">Multi Search ne se limite pas aux produits -- il vient enrichir la barre de recherche d'Odoo elle-meme, donc il fonctionne exactement de la meme facon sur n'importe quelle vue liste de votre base de donnees. Chaque exemple ci-dessous montre les deux memes etapes : une liste de references copiee depuis Excel, et les enregistrements correspondants retrouves instantanement dans Odoo.</p>
 
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Ventes</div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Produits</div>
         <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
             <tr>
-                <td style="width:240px;vertical-align:top;">
+                <td style="width:300px;vertical-align:top;">
+                    <img src="screen_excel.png" alt="Liste de references Excel pour les produits" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Liste de references dans Excel</p>
+                </td>
+                <td style="vertical-align:top;">
+                    <img src="screen_odoo.png" alt="Resultat de la recherche multiple sur les produits" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Tous les produits correspondants retrouves dans Odoo</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Ventes</div>
+        <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
+            <tr>
+                <td style="width:300px;vertical-align:top;">
                     <img src="ventes_excel.png" alt="Liste de references Excel pour les commandes de vente" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Liste de references dans Excel</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Liste de references dans Excel</p>
                 </td>
                 <td style="vertical-align:top;">
                     <img src="ventes_odoo.png" alt="Resultat de la recherche multiple sur les commandes de vente" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Toutes les commandes de vente correspondantes retrouvees dans Odoo</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Toutes les commandes de vente correspondantes retrouvees dans Odoo</p>
                 </td>
             </tr>
         </table>
     </div>
-
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Achats</div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Achats</div>
         <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
             <tr>
-                <td style="width:240px;vertical-align:top;">
+                <td style="width:300px;vertical-align:top;">
                     <img src="achats_excel.png" alt="Liste de references Excel pour les commandes d'achat" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Liste de references dans Excel</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Liste de references dans Excel</p>
                 </td>
                 <td style="vertical-align:top;">
                     <img src="achats_odoo.png" alt="Resultat de la recherche multiple sur les commandes d'achat" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Toutes les commandes d'achat correspondantes retrouvees dans Odoo</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Toutes les commandes d'achat correspondantes retrouvees dans Odoo</p>
                 </td>
             </tr>
         </table>
     </div>
-
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Fabrication</div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Fabrication</div>
         <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
             <tr>
-                <td style="width:240px;vertical-align:top;">
+                <td style="width:300px;vertical-align:top;">
                     <img src="fabrication_excel.png" alt="Liste de references Excel pour les ordres de fabrication" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Liste de references dans Excel</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Liste de references dans Excel</p>
                 </td>
                 <td style="vertical-align:top;">
                     <img src="fabrication_odoo.png" alt="Resultat de la recherche multiple sur les ordres de fabrication" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Tous les ordres de fabrication correspondants retrouves dans Odoo</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Tous les ordres de fabrication correspondants retrouves dans Odoo</p>
                 </td>
             </tr>
         </table>
     </div>
-
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Contacts</div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Inventaire</div>
         <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
             <tr>
-                <td style="width:240px;vertical-align:top;">
-                    <img src="contacts_excel.png" alt="Liste de references Excel pour les contacts" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Liste de references dans Excel</p>
-                </td>
-                <td style="vertical-align:top;">
-                    <img src="contacts_odoo.png" alt="Resultat de la recherche multiple sur les contacts" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Tous les contacts correspondants retrouves dans Odoo</p>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div style="margin-bottom:34px;">
-        <div style="display:inline-block;background:#0a1e48;color:white;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:14px;">Inventaire</div>
-        <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
-            <tr>
-                <td style="width:240px;vertical-align:top;">
+                <td style="width:300px;vertical-align:top;">
                     <img src="inventory_excel.png" alt="Liste de references Excel pour les mouvements de stock" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Liste de references dans Excel</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Liste de references dans Excel</p>
                 </td>
                 <td style="vertical-align:top;">
                     <img src="inventory_odoo.png" alt="Resultat de la recherche multiple sur les mouvements de stock" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
-                    <p style="font-size:12px;color:#999;text-align:center;margin:8px 0 0;font-style:italic;">Tous les mouvements correspondants retrouves dans Odoo</p>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Tous les mouvements correspondants retrouves dans Odoo</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-bottom:36px;">
+        <div style="display:inline-block;background:#0a1e48;color:white;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:16px;">Contacts</div>
+        <table style="width:100%;border-collapse:separate;border-spacing:16px 0;">
+            <tr>
+                <td style="width:300px;vertical-align:top;">
+                    <img src="contacts_excel.png" alt="Liste de references Excel pour les contacts" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Liste de references dans Excel</p>
+                </td>
+                <td style="vertical-align:top;">
+                    <img src="contacts_odoo.png" alt="Resultat de la recherche multiple sur les contacts" style="width:100%;border-radius:8px;border:1px solid #dce8ff;box-shadow:0 4px 20px rgba(10,30,72,.1);display:block;"/>
+                    <p style="font-size:14px;color:#888;text-align:center;margin:10px 0 0;font-style:italic;">Tous les contacts correspondants retrouves dans Odoo</p>
                 </td>
             </tr>
         </table>

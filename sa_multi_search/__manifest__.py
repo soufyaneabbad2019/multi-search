@@ -27,6 +27,12 @@ Works on any Odoo view: Products, Sales Orders, Purchase Orders, Inventory, Manu
     },
     'images': [
         'static/description/banner.png',
+        'static/description/screen_odoo.png',
+        'static/description/ventes_odoo.png',
+        'static/description/achats_odoo.png',
+        'static/description/fabrication_odoo.png',
+        'static/description/inventory_odoo.png',
+        'static/description/contacts_odoo.png',
     ],
     'installable': True,
     'auto_install': False,

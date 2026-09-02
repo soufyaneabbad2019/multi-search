@@ -42,11 +42,32 @@ patch(SearchBar.prototype, {
         let _keyHandler = null;
         let _pasteHandler = null;
 
+        // Adds every value directly through the search model instead of calling
+        // selectItem() in a loop. selectItem() re-derives label/value from
+        // this.state.query when the two don't match (a barcode-scanner heuristic
+        // added in newer Odoo versions), which clobbers every value after the
+        // first once resetState() blanks the query. addAutoCompletionValues()
+        // is the underlying call selectItem() makes and is unaffected by that
+        // heuristic, so it's the stable way to OR multiple values onto one facet
+        // across versions.
+        const addValues = (template, values) => {
+            const { searchItemId, operator, fieldType } = template;
+            const fallbackOperator = ["selection", "boolean", "tags"].includes(fieldType) ? "=" : "ilike";
+            for (const value of values) {
+                this.env.searchModel.addAutoCompletionValues(searchItemId, {
+                    label: value,
+                    value: value,
+                    operator: operator || fallbackOperator,
+                });
+            }
+            this.resetState();
+        };
+
         onMounted(() => {
             const input = document.querySelector(".o_searchview_input");
             if (!input) return;
 
-            _keyHandler = async (ev) => {
+            _keyHandler = (ev) => {
                 if (ev.key !== "Enter" || ev.isComposing) return;
                 const query = input.value || "";
                 const values = extractMultiValues(query);
@@ -58,11 +79,8 @@ patch(SearchBar.prototype, {
                 ev.preventDefault();
                 ev.stopPropagation();
 
-                for (const value of values) {
-                    await this.selectItem({ ...template, label: value, value: value });
-                }
+                addValues(template, values);
                 input.value = "";
-                this.state.query = "";
             };
 
             _pasteHandler = async (ev) => {
@@ -83,11 +101,8 @@ patch(SearchBar.prototype, {
                 const template = this.items?.find(i => i.searchItemId);
                 if (!template) return;
 
-                for (const value of values) {
-                    await this.selectItem({ ...template, label: value, value: value });
-                }
+                addValues(template, values);
                 input.value = "";
-                this.state.query = "";
             };
 
             input.addEventListener("keydown", _keyHandler, true);

@@ -20,11 +20,9 @@ Works on any Odoo view: Products, Sales Orders, Purchase Orders, Inventory, Manu
     'price': 25.0,
     'currency': 'EUR',
     'depends': ['web'],
-    'assets': {
-        'web.assets_backend': [
-            'sa_multi_search/static/src/js/multi_search.js',
-        ],
-    },
+    'data': [
+        'views/assets_backend.xml',
+    ],
     'images': [
         'static/description/banner.png',
         'static/description/screen_odoo.png',

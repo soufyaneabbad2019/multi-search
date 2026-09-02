@@ -1,104 +1,95 @@
-/** @odoo-module **/
+odoo.define('sa_multi_search.SearchBar14', function (require) {
+"use strict";
 
-import { SearchBar } from "@web/search/search_bar/search_bar";
-import { patch } from "@web/core/utils/patch";
-import { onMounted, onWillUnmount } from "@odoo/owl";
+var SearchBar = require('web.SearchBar');
 
 function extractMultiValues(query) {
-    const q = (query || "").trim();
+    var q = (query || "").trim();
     if (!q) return null;
-    const m = q.match(/^\{(.+?)\}$/s);
+    var m = q.match(/^\{([\s\S]+?)\}$/);
     if (m) {
-        const vals = m[1].split(/\s+/).filter(Boolean);
+        var vals = m[1].split(/\s+/).filter(Boolean);
         return vals.length > 1 ? vals : null;
     }
-    if (q.includes("\n") || q.includes("\t")) {
-        const vals = q.split(/[\r\n\t]+/).map(v => v.trim()).filter(Boolean);
-        return vals.length > 1 ? vals : null;
+    if (q.indexOf("\n") !== -1 || q.indexOf("\t") !== -1) {
+        var vals2 = q.split(/[\r\n\t]+/).map(function (v) { return v.trim(); }).filter(Boolean);
+        return vals2.length > 1 ? vals2 : null;
     }
     return null;
 }
 
-function waitForItems(getItems, timeout = 1000) {
-    return new Promise((resolve) => {
-        const start = Date.now();
-        const check = () => {
-            const items = getItems();
-            if (items?.find(i => i.searchItemId)) {
-                return resolve(items);
-            }
-            if (Date.now() - start > timeout) {
-                return resolve(items);
-            }
-            setTimeout(check, 30);
-        };
-        check();
+// this.autoCompleteSources is already exclusively field-type sources, built
+// once in the constructor from this.model.get('filters', f => f.type ===
+// 'field'). We reuse the exact same call _selectSource() makes
+// (model.dispatch('addAutoCompletionValues', ...)) once per pasted/typed
+// value instead of once for a single autocomplete pick.
+function saApplyMultiValues(searchBarInstance, values) {
+    var source = searchBarInstance.autoCompleteSources && searchBarInstance.autoCompleteSources[0];
+    if (!source) return false;
+    values.forEach(function (v) {
+        searchBarInstance.model.dispatch('addAutoCompletionValues', {
+            filterId: source.filterId,
+            value: ("value" in source) ? source.value : searchBarInstance._parseWithSource(v, source),
+            label: v,
+            operator: source.filterOperator || source.operator,
+        });
     });
+    return true;
 }
 
-patch(SearchBar.prototype, {
-    setup() {
-        super.setup();
-        let _keyHandler = null;
-        let _pasteHandler = null;
+var _saSuperMounted = SearchBar.prototype.mounted;
+SearchBar.prototype.mounted = function () {
+    if (_saSuperMounted) {
+        _saSuperMounted.apply(this, arguments);
+    }
+    var input = this.inputRef && this.inputRef.el;
+    if (!input) return;
+    this._saPasteHandler = this._onSaMultiPaste.bind(this);
+    input.addEventListener('paste', this._saPasteHandler, true);
+};
 
-        onMounted(() => {
-            const input = document.querySelector(".o_searchview_input");
-            if (!input) return;
+var _saSuperWillUnmount = SearchBar.prototype.willUnmount;
+SearchBar.prototype.willUnmount = function () {
+    var input = this.inputRef && this.inputRef.el;
+    if (input && this._saPasteHandler) {
+        input.removeEventListener('paste', this._saPasteHandler, true);
+    }
+    if (_saSuperWillUnmount) {
+        _saSuperWillUnmount.apply(this, arguments);
+    }
+};
 
-            _keyHandler = async (ev) => {
-                if (ev.key !== "Enter" || ev.isComposing) return;
-                const query = input.value || "";
-                const values = extractMultiValues(query);
-                if (!values) return;
+SearchBar.prototype._onSaMultiPaste = function (ev) {
+    var raw = (ev.clipboardData || window.clipboardData).getData('text');
+    var values = extractMultiValues(raw);
+    if (!values) return;
+    ev.preventDefault();
+    if (saApplyMultiValues(this, values)) {
+        this.state.inputValue = "";
+        if (this.inputRef && this.inputRef.el) {
+            this.inputRef.el.value = "";
+        }
+    }
+};
 
-                const template = this.items?.find(i => i.searchItemId);
-                if (!template) return;
-
-                ev.preventDefault();
-                ev.stopPropagation();
-
-                for (const value of values) {
-                    await this.selectItem({ ...template, label: value, value: value });
+var _saSuperOnSearchKeydown = SearchBar.prototype._onSearchKeydown;
+SearchBar.prototype._onSearchKeydown = function (ev) {
+    if (ev.key === 'Enter' && !ev.isComposing) {
+        var values = extractMultiValues(this.state.inputValue);
+        if (values) {
+            ev.preventDefault();
+            if (saApplyMultiValues(this, values)) {
+                this.state.inputValue = "";
+                if (this.inputRef && this.inputRef.el) {
+                    this.inputRef.el.value = "";
                 }
-                input.value = "";
-                this.state.query = "";
-            };
+            }
+            return;
+        }
+    }
+    return _saSuperOnSearchKeydown.apply(this, arguments);
+};
 
-            _pasteHandler = async (ev) => {
-                const raw = (ev.clipboardData || window.clipboardData).getData("text");
-                const values = extractMultiValues(raw);
-                if (!values) return;
+return SearchBar;
 
-                ev.preventDefault();
-                ev.stopPropagation();
-
-                // Déclencher le vrai handler OWL via un événement input natif
-                input.value = values[0];
-                input.dispatchEvent(new Event("input", { bubbles: true }));
-
-                // Attendre qu'OWL ait calculé les items
-                await waitForItems(() => this.items);
-
-                const template = this.items?.find(i => i.searchItemId);
-                if (!template) return;
-
-                for (const value of values) {
-                    await this.selectItem({ ...template, label: value, value: value });
-                }
-                input.value = "";
-                this.state.query = "";
-            };
-
-            input.addEventListener("keydown", _keyHandler, true);
-            input.addEventListener("paste", _pasteHandler, true);
-        });
-
-        onWillUnmount(() => {
-            const input = document.querySelector(".o_searchview_input");
-            if (!input) return;
-            if (_keyHandler) input.removeEventListener("keydown", _keyHandler, true);
-            if (_pasteHandler) input.removeEventListener("paste", _pasteHandler, true);
-        });
-    },
 });

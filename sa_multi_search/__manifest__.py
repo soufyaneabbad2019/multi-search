@@ -17,7 +17,7 @@ Works on any Odoo view: Products, Sales Orders, Purchase Orders, Inventory, Manu
     'author': 'Soufyane Abbad',
     'website': 'https://www.linkedin.com/in/soufyane-abbad',
     'license': 'OPL-1',
-    'price': 0.0,
+    'price': 15.0,
     'currency': 'EUR',
     'depends': ['web'],
     'data': [
